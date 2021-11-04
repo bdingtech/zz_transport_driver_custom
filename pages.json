@@ -1,0 +1,52 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		 {
+			"path": "pages/user/login",
+			"style": {
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"navigationBarTitleText": "绑定司机身份",
+				"enablePullDownRefresh": false
+			}
+		
+		}
+	],
+	"tabBar": {
+		"color": "#7F8389",
+		"selectedColor": "#5495e6",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/images/home/bar_order_grey.png",
+				"selectedIconPath": "static/images/home/bar_order_zx.png"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "我的",
+				"iconPath": "static/images/home/bar_home_me_grey.png",
+				"selectedIconPath": "static/images/home/bar_home_me.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
