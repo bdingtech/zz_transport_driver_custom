@@ -23,7 +23,16 @@
 			}
 		
 		}
-	],
+	    ,{
+            "path" : "pages/order/pendingOrder/pendingOrder",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "待处理订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#7F8389",
 		"selectedColor": "#5495e6",

@@ -16,6 +16,7 @@ import api from '@/src/api/api.js'
 Vue.use(api, app)
 
 app.$mount()
+export default app
 // #endif
 
 // #ifdef VUE3

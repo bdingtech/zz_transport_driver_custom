@@ -12,7 +12,22 @@
 		<!-- 欢迎 -->
 		<view class="welcom">
 			<view>你好，</view>
-			<view>欢迎使用{{ APPNAME }}</view>
+			<view>欢迎注册成为司机</view>
+		</view>
+		<view class="register_box">
+			<view class="cu-form-group">
+				<view class="title">姓名</view>
+				<input v-model="driverInfo.driver_name" type="text" placeholder="请输入您的姓名" />
+			</view>
+			<view class="cu-form-group ">
+				<view class="title">身份证</view>
+				<input v-model="driverInfo.driver_sfz" type="idcard" placeholder="请输入您的身份证号码" />
+			</view>
+			<view class="cu-form-group">
+				<view class="title">手机号</view>
+				<input v-model="driverInfo.driver_tel" type="number" placeholder="请输入您的手机号码" />
+				<button class="cu-btn sm bg-green" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">获取手机号</button>
+			</view>
 		</view>
 		<!--按钮-->
 		<view class="flex flex-direction zaiui-btn-view">
@@ -27,9 +42,10 @@
 					</view>
 				</view>
 			</u-modal> -->
-			<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" class="cu-btn round bg-green">
+
+			<button @click="resignAsDriver" class="cu-btn round bg-green">
 				<text class="cuIcon-weixin icon" />
-				<text>微信授权手机号登录</text>
+				<text>注册成为司机</text>
 			</button>
 			<!-- 			<button class="cu-btn plain round margin-top tel" >
 				<text >使用短信验证码登录</text>
@@ -59,6 +75,11 @@ export default {
 			APPNAME: APPNAME,
 			telData: {},
 			infoData: {},
+			driverInfo: {
+				driver_name: '',
+				driver_tel: '',
+				driver_sfz: ''
+			},
 			code: null,
 			qyCode: null,
 			show: false
@@ -101,8 +122,42 @@ export default {
 			}
 
 			this.telData = e.detail;
-			this.login();
+			// this.driverInfo.driver_tel =
+			// this.login();
 			// this.show = true;
+		},
+		async resignAsDriver() {
+			if (this.driverInfo.driver_sfz.length === 0) {
+				uni.showToast({
+					title: '请输入身份证',
+					icon: 'error'
+				});
+				return;
+			}
+			if (this.driverInfo.driver_tel.length === 0) {
+				uni.showToast({
+					title: '请输入手机号',
+					icon: 'error'
+				});
+				return;
+			}
+			if (this.driverInfo.driver_name.length === 0) {
+				uni.showToast({
+					title: '请输入姓名',
+					icon: 'error'
+				});
+				return;
+			}
+			const result = await this.$http.api.resignAsDriver({
+				...this.driverInfo
+			});
+			uni.showToast({
+				title: '注册成功'
+			});
+			setTimeout(() => {
+				uni.navigateBack();
+			}, 2000);
+			console.log(result);
 		},
 		async getUserinfo(telData) {
 			this.infoData = await getUserInfoRes();
@@ -139,6 +194,9 @@ export default {
 page {
 	background-color: #ffffff;
 }
+.cu-form-group .title {
+	min-width: calc(4em + 15px);
+}
 .slot-content {
 	padding: 20rpx;
 	.content {
@@ -159,6 +217,10 @@ page {
 	font-size: 28px;
 	font-weight: bold;
 }
+.register_box {
+	margin: 60rpx 0;
+	padding: 0 45.45rpx;
+}
 .zaiui-user-login-avatar-view {
 	position: relative;
 	display: flex;
@@ -172,7 +234,7 @@ page {
 }
 .zaiui-btn-view {
 	position: relative;
-	margin-top: 172.72rpx;
+	// margin-top: 172.72rpx;
 	padding: 0 65.45rpx;
 	font-weight: bold;
 	.cu-btn .icon {

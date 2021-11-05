@@ -8,14 +8,14 @@ import {
 /**
  * @param {boolean}  = [setStorage]  是否需要存储在本地
  */
-export const mplogin = (setStorage = true) => {
+export const drvMpLogin = (setStorage = true) => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const params = {
 				code: await getCode(),
 				type: 1,
 			}
-			const { token:userToken,userInfo:userinfoXY } = await context.$http.api.mplogin(params)
+			const { token:userToken,userInfo:userinfoXY } = await context.$http.api.drvMpLogin(params)
 			if(setStorage){
 				uni.setStorageSync('userToken',userToken)
 				uni.setStorageSync('userinfoXY',userinfoXY)
@@ -44,6 +44,20 @@ export const loginWx = (rawUserInfo) => {
 
 	})
 }
+/**
+ * 判断用户是否是司机身份
+ */
+// export const checkUserIsLogin = () => {
+// 	return new Promise((resolve, reject) => {
+// 		const userinfoXY = uni.getStorageSync('userinfoXY')
+// 		if (userinfoXY && userinfoXY.login_status !== 0) {
+// 			resolve(true)
+// 		} else {
+// 			reject(false)
+// 		}
+// 	})
+
+// }
 /**
  * 判断用户是否已经登录
  */

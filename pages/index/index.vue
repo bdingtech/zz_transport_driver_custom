@@ -17,6 +17,8 @@
 							<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 						</view>
 					</li>
+				</ul>
+				<ul>
 					<li>
 						<image class="img" src="@/static/images/waiting.png" />
 						<view class="text">
@@ -50,6 +52,9 @@
 
 export default {
 	name: 'home',
+	onLoad() {
+			
+	},
 	data() {
 		return {
 			topHeight: uni.getSystemInfoSync().statusBarHeight
