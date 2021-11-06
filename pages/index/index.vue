@@ -50,16 +50,19 @@
 <script>
 // import introduction from '/components/introduction.vue';
 import { checkUserIsDriver } from '@/src/utils/login.js';
+import { drvMpLogin } from '@/src/utils/login.js';
 export default {
 	name: 'home',
-	onLoad() {
-		if (checkUserIsDriver) {
-			this.isDriver = true;
-		}
+	onShow() {
+		drvMpLogin().then(res => {
+			checkUserIsDriver().then(res => {
+				this.isDriver = true;
+			});
+		});
 	},
 	data() {
 		return {
-			isDriver: false,
+			isDriver: true,
 			topHeight: uni.getSystemInfoSync().statusBarHeight
 		};
 	},

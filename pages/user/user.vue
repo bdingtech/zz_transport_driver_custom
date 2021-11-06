@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { checkUserIsLogin } from '@/src/utils/login.js';
+import { checkUserIsDriver } from '@/src/utils/login.js';
 export default {
 	data() {
 		return {
@@ -73,7 +73,7 @@ export default {
 		const userinfoXY = uni.getStorageSync('userinfoXY')
 		this.userinfoXY = userinfoXY
 		console.log(this.userinfoXY)
-		checkUserIsLogin().catch(err => {
+		checkUserIsDriver().catch(err => {
 			uni.navigateTo({
 				url: '/pages/user/login'
 			});
