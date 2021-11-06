@@ -9,8 +9,8 @@
 		</view>
 		<div class="index-components">
 			<ol>
-				<ul>
-					<li>
+				<ul v-if="!isDriver">
+					<li @click="goDetail('register')">
 						<image class="img" src="@/static/images/register.png" />
 						<view class="text">
 							<span>注册成为司机</span>
@@ -18,22 +18,22 @@
 						</view>
 					</li>
 				</ul>
-				<ul>
-					<li>
+				<ul v-else>
+					<li @click="goDetail('pending')">
 						<image class="img" src="@/static/images/waiting.png" />
 						<view class="text">
 							<span>待处理订单</span>
 							<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 						</view>
 					</li>
-					<li>
+					<li @click="goDetail('order')">
 						<image class="img" src="@/static/images/orderQuery.png" />
 						<view class="text">
 							<span>历史订单</span>
 							<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 						</view>
 					</li>
-					<li>
+					<li @click="goDetail('driverInfo')">
 						<image class="img" src="@/static/images/acount.png" />
 						<view class="text">
 							<span>司机信息</span>
@@ -49,16 +49,38 @@
 
 <script>
 // import introduction from '/components/introduction.vue';
-
+import { checkUserIsDriver } from '@/src/utils/login.js';
 export default {
 	name: 'home',
 	onLoad() {
-			
+		if (checkUserIsDriver) {
+			this.isDriver = true;
+		}
 	},
 	data() {
 		return {
+			isDriver: false,
 			topHeight: uni.getSystemInfoSync().statusBarHeight
 		};
+	},
+	methods: {
+		goDetail(type) {
+			let url = '';
+			switch (type) {
+				case 'register':
+					url = '/pages/user/login';
+					break;
+				case 'pending':
+					url = '/pages/order/pendingOrder/pendingOrder';
+					break;
+				case 'order':
+					url = '/pages/order/pastOrder/pastOrder';
+					break;
+			}
+			uni.navigateTo({
+				url
+			});
+		}
 	}
 	// components: {
 	// 	introduction

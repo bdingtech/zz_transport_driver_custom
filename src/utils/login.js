@@ -15,12 +15,22 @@ export const drvMpLogin = (setStorage = true) => {
 				code: await getCode(),
 				type: 1,
 			}
-			const { token:userToken,userInfo:userinfoXY } = await context.$http.api.drvMpLogin(params)
-			if(setStorage){
-				uni.setStorageSync('userToken',userToken)
-				uni.setStorageSync('userinfoXY',userinfoXY)
+			const {
+				token: userToken,
+				userInfo: userinfoXY,
+				drv_info,
+				is_drv
+			} = await context.$http.api.drvMpLogin(params)
+			if (setStorage) {
+				uni.setStorageSync('userToken', userToken)
+				uni.setStorageSync('userinfoXY', userinfoXY)
+				uni.setStorageSync('drv_info', drv_info)
+				uni.setStorageSync('is_drv', is_drv)
 			}
-			resolve({userToken,userinfoXY})
+			resolve({
+				userToken,
+				userinfoXY
+			})
 		} catch (err) {
 			console.log(err)
 		}
@@ -47,17 +57,17 @@ export const loginWx = (rawUserInfo) => {
 /**
  * 判断用户是否是司机身份
  */
-// export const checkUserIsLogin = () => {
-// 	return new Promise((resolve, reject) => {
-// 		const userinfoXY = uni.getStorageSync('userinfoXY')
-// 		if (userinfoXY && userinfoXY.login_status !== 0) {
-// 			resolve(true)
-// 		} else {
-// 			reject(false)
-// 		}
-// 	})
+export const checkUserIsDriver = () => {
+	return new Promise((resolve, reject) => {
+		const is_drv = uni.getStorageSync('is_drv')
+		if (is_drv) {
+			resolve(true)
+		} else {
+			reject(false)
+		}
+	})
 
-// }
+}
 /**
  * 判断用户是否已经登录
  */
@@ -91,9 +101,9 @@ export const checkUserIsBind = () => {
  */
 export const checkQyWechatEnv = () => {
 	const info = uni.getSystemInfoSync()
-	if(info.environment && info.environment === 'wxwork'){
+	if (info.environment && info.environment === 'wxwork') {
 		return true
-	}else{
+	} else {
 		return false
 	}
 }

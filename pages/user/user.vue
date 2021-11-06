@@ -30,15 +30,15 @@
 			</view> -->
 		</view>
 		<!-- 审批中心 -->
-		<view class="_ul">
+<!-- 		<view class="_ul">
 			<view class="_li flex-sb-c" @click="goDetail('approval')">
 				<view class="flex align-center"  >
-					<!-- <image src="@/static/images/daishenpi.png" class="funtion_area" style="width: 100rpx;height: 100rpx;" mode=""></image> -->
+					<image src="@/static/images/daishenpi.png" class="funtion_area" style="width: 100rpx;height: 100rpx;" mode=""></image>
 					<view class="left-tit">审批管理</view>
 				</view>
 				<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 			</view>
-		</view>
+		</view> -->
 		<!-- 功能区 -->
 		<view class="_ul">
 			<view class="_li flex-sb-c" @click="goDetail('feeInfo')">
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-// import { checkUserIsBind } from '@/src/utils/login.js';
+import { checkUserIsLogin } from '@/src/utils/login.js';
 export default {
 	data() {
 		return {
@@ -73,11 +73,11 @@ export default {
 		const userinfoXY = uni.getStorageSync('userinfoXY')
 		this.userinfoXY = userinfoXY
 		console.log(this.userinfoXY)
-		// checkUserIsBind().catch(err => {
-		// 	uni.navigateTo({
-		// 		url: '/home/users/login'
-		// 	});
-		// });
+		checkUserIsLogin().catch(err => {
+			uni.navigateTo({
+				url: '/pages/user/login'
+			});
+		});
 	},
 	methods: {
 		goDetail(item) {

@@ -12,7 +12,8 @@
 								{{ item.name }}
 								<!-- <view class="tel">按时间计费</view> -->
 							</view>
-							<view @click="call(item.tel)"><image src="@/static/images/call.png" /></view>
+							<view><image src="@/static/images/bus_details_icon_go.png" /></view>
+							<!-- <view @click="call(item.tel)"><image src="@/static/images/call.png" /></view> -->
 						</view>
 					</view>
 					<view class="nut-cell">
@@ -38,11 +39,10 @@
 						<!-- 		<view class="">
 							按时间计费
 						</view> -->
-						<view class="margin-top flex flex-direction">
+						<!-- <view class="margin-top flex flex-direction">
 							<button class="cu-btn bg-red lg" @click="setOrderDone(item.id)" v-if="item.order_status == 'running'">结束计费</button>
 							<button class="cu-btn bg-blue lg" @click="setOrderStart(item.id)" v-else>开始计费</button>
-							<!-- <button class="cu-btn bg-red margin-tb-sm lg">嫣红</button> -->
-						</view>
+						</view> -->
 					</view>
 				</view>
 			</view>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import empty from '@/comnponents/empty.vue';
+	import empty from '@/comnponents/empty.vue';
 export default {
 	data() {
 		return {
@@ -66,9 +66,7 @@ export default {
 	},
 	methods: {
 		async getMyOrderList() {
-			this.orderList = await this.$http.api.getMyOrderList({
-				type: 'process'
-			});
+			this.orderList = await this.$http.api.getMyOrderList();
 		},
 		async setOrderStart(order_id) {
 			await this.$http.api.setOrderStart({
@@ -82,7 +80,7 @@ export default {
 				content: '确认结束计费吗？',
 				success: res => {
 					if (res.confirm) {
-						this.$http.api.setOrderDone({
+						 this.$http.api.setOrderDone({
 							order_id
 						});
 					}
@@ -163,8 +161,8 @@ export default {
 			// align-items: baseline;
 			align-items: center;
 			image {
-				width: 60rpx;
-				height: 60rpx;
+				width: 20rpx;
+				height: 20rpx;
 			}
 			.time {
 				display: flex;
@@ -188,7 +186,8 @@ export default {
 					font-size: 28rpx;
 					color: #ffffff;
 					line-height: 30rpx;
-					background-color: #0062df;
+					// background-color: #0062df;
+					background-color: #8c8c8c;
 				}
 			}
 		}

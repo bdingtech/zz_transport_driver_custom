@@ -5,10 +5,16 @@ const install = (Vue, vm) => {
 	// 此处使用了传入的params参数，一切自定义即可
 	const drvMpLogin = (params = {}) => vm.$http.post(`/platform.pubservice/drvMpLogin`, params);
 	const resignAsDriver = (params = {}) => vm.$http.post(`/platform.Userservice/resignAsDriver`, params);
+	const getMyOrderList = (params = {}) => vm.$http.post(`/gwyc.driver/getMyOrderList`, params);
+	const setOrderStart = (params = {}) => vm.$http.post(`/gwyc.driver/setOrderStart`, params);
+	const setOrderDone = (params = {}) => vm.$http.post(`/gwyc.driver/setOrderDone`, params);
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$http.api(因为vm就是this，也即this.$http.api)下
 	vm.$http.api = {
 		drvMpLogin,
-		resignAsDriver
+		resignAsDriver,
+		getMyOrderList,
+		setOrderStart,
+		setOrderDone
 	};
 }
 
