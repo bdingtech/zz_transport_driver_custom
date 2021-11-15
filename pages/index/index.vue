@@ -1,10 +1,10 @@
 <template>
 	<view class="index" :style="'padding-top:' + topHeight + 'px'">
 		<view class="index-header">
-			<image src="https://cdn99.jerlan.cn/20210806005505.png" srcset="" />
+			<image src="https://cdn99.jerlan.cn/20211115225309.png" srcset="" />
 			<view class="info">
-				<h1>湘潭客运·司机端</h1>
-				<p>更专业的本地出行平台</p>
+				<h1>交发科大用车·司机端</h1>
+				<p>用心服务好客户的每一次出行</p>
 			</view>
 		</view>
 		<div class="index-components">
@@ -57,6 +57,8 @@ export default {
 		drvMpLogin().then(res => {
 			checkUserIsDriver().then(res => {
 				this.isDriver = true;
+			}).catch((err) => {
+				this.isDriver = false;
 			});
 		});
 	},
@@ -79,6 +81,9 @@ export default {
 				case 'order':
 					url = '/pages/order/pastOrder/pastOrder';
 					break;
+				case 'driverInfo':
+					url = '/pages/user/bindInfo';
+					break;
 			}
 			uni.navigateTo({
 				url
@@ -98,23 +103,23 @@ export default {
 	background-color: #f6f7f9;
 	&-header {
 		display: flex;
+		justify-content: center;
 		align-items: center;
-		margin-top: 30rpx;
-		padding: 0 34px;
-		height: 117px;
+		margin-top: 120rpx;
+		// height: 236rpx;
 		> image {
-			width: 67px;
-			height: 67px;
-			margin-right: 18px;
+			width: 110rpx;
+			height: 110rpx;
+			margin-right: 36rpx;
 			flex-shrink: 0;
 		}
 		.info {
 			display: flex;
 			flex-direction: column;
 			h1 {
-				height: 48px;
-				line-height: 48px;
-				font-size: 27px;
+				height: 98rpx;
+				line-height: 98rpx;
+				font-size: 50rpx;
 				color: rgba(51, 51, 51, 1);
 				font-weight: 500;
 			}

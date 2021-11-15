@@ -12,7 +12,7 @@
 								{{ item.name }}
 								<!-- <view class="tel">按时间计费</view> -->
 							</view>
-							<view><image src="@/static/images/bus_details_icon_go.png" /></view>
+							<!-- <view><image src="@/static/images/bus_details_icon_go.png" /></view> -->
 							<!-- <view @click="call(item.tel)"><image src="@/static/images/call.png" /></view> -->
 						</view>
 					</view>
@@ -106,6 +106,9 @@ export default {
 </script>
 
 <style lang="scss" scopd>
+	.item{
+		margin-bottom: 20rpx;
+	}
 .nut-cell-group__warp {
 	display: block;
 	border-radius: 12rpx;

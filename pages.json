@@ -40,6 +40,32 @@
                 "enablePullDownRefresh": false
             }
             
+        },{
+            "path" : "pages/about/about",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "关于我们",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path" : "pages/about/agreement/agreement",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "用户协议",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/user/bindInfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册信息",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
 	"tabBar": {

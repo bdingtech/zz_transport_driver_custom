@@ -5,12 +5,12 @@
 			<view class="user_wrap">
 				<image class="_img left" src="//image.bbxhc.com/pub/web/bbx-minapp/images/common-v2/default_head.png" mode=""></image>
 				<view class="_div right">
-					<label class="_span " style="font-size: 45rpx;">{{userinfoXY.length !== 0 ? userinfoXY.name : '未认证用户'}}</label>
+					<label class="_span " style="font-size: 45rpx;">{{ JSON.stringify(userinfoXY) !== '{}' ? userinfoXY.driver_name : '未认证用户' }}</label>
 					<view class="_em">用心服务,守护客户的每一次出行</view>
 				</view>
 			</view>
 			<!-- 订单区 -->
-<!-- 			<view class="aside_wrap" style="display: flex;justify-content: space-around;">
+			<!-- 			<view class="aside_wrap" style="display: flex;justify-content: space-around;">
 				<view class="funtion_area">
 					<image src="@/static/images/quanbu.png" class="funtion_area" mode=""></image>
 					<text>全部申请</text>
@@ -30,7 +30,7 @@
 			</view> -->
 		</view>
 		<!-- 审批中心 -->
-<!-- 		<view class="_ul">
+		<!-- 		<view class="_ul">
 			<view class="_li flex-sb-c" @click="goDetail('approval')">
 				<view class="flex align-center"  >
 					<image src="@/static/images/daishenpi.png" class="funtion_area" style="width: 100rpx;height: 100rpx;" mode=""></image>
@@ -41,18 +41,18 @@
 		</view> -->
 		<!-- 功能区 -->
 		<view class="_ul">
-			<view class="_li flex-sb-c" @click="goDetail('feeInfo')">
-				<view class="left-tit">实名信息</view>
+			<view class="_li flex-sb-c" @click="goDetail('registerInfo')">
+				<view class="left-tit">注册信息</view>
 				<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 			</view>
 			<view class="_li flex-sb-c" @click="goDetail('feeInfo')">
-				<view class="left-tit">费用说明</view>
+				<view class="left-tit">费用标准</view>
 				<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 			</view>
-			<view class="_li flex-sb-c" @click="goDetail('helpCenter')">
+<!-- 			<view class="_li flex-sb-c" @click="goDetail('helpCenter')">
 				<view class="left-tit">帮助中心</view>
 				<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
-			</view>
+			</view> -->
 			<view class="_li flex-sb-c" @click="goDetail('aboutUs')">
 				<view class="left-tit">关于我们</view>
 				<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
@@ -66,13 +66,17 @@ import { checkUserIsDriver } from '@/src/utils/login.js';
 export default {
 	data() {
 		return {
-			userinfoXY:{}
+			userinfoXY: {}
 		};
 	},
+	onShow() {
+		const drv_info = uni.getStorageSync('drv_info');
+		if(drv_info){
+			this.userinfoXY = drv_info;
+			console.log(this.userinfoXY);
+		}
+	},
 	onLoad() {
-		const userinfoXY = uni.getStorageSync('userinfoXY')
-		this.userinfoXY = userinfoXY
-		console.log(this.userinfoXY)
 		checkUserIsDriver().catch(err => {
 			uni.navigateTo({
 				url: '/pages/user/login'
@@ -86,9 +90,13 @@ export default {
 				case 'feeInfo':
 					url = '/helpCenter/chargeStandard/chargeStandard';
 					break;
-				case 'approval':
-					url = '/approval/approval';
+				case 'registerInfo':
+					url = '/pages/user/bindInfo';
 					break;
+				case 'aboutUs':
+					url = '/pages/about/about';
+					break;
+					
 			}
 			uni.navigateTo({
 				url: url
@@ -107,7 +115,7 @@ page {
 	justify-content: space-between;
 	align-items: center;
 }
-._li{
+._li {
 	display: flex;
 }
 .funtion_area {
