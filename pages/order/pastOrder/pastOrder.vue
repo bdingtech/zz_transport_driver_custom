@@ -29,20 +29,30 @@
 						</view>
 					</view>
 					<view>
-						<!-- <view class="operat_area">
-							<view class="price"><nut-price price="111" :need-symbol="true" :thousands="false" /></view>
-							<view class="operat">
-								<button class="cu-btn round" type="default">改派</button>
-								<button class="cu-btn round  bg-red" type="default">导航</button>
+						<view class="detail_info ">
+							<view class="item_info">
+								<text class="title">派单车辆</text>
+								{{ item.car_info.car_no }} · {{ item.car_info.car_brand }}
 							</view>
-						</view> -->
-						<!-- 		<view class="">
-							按时间计费
-						</view> -->
-						<!-- <view class="margin-top flex flex-direction">
-							<button class="cu-btn bg-red lg" @click="setOrderDone(item.id)" v-if="item.order_status == 'running'">结束计费</button>
-							<button class="cu-btn bg-blue lg" @click="setOrderStart(item.id)" v-else>开始计费</button>
-						</view> -->
+							<view class="item_info">
+								<text class="title">接驾人</text>
+								{{ item.name }}
+							</view>
+
+							<view class="item_info">
+								<text class="title">计费方式</text>
+								{{ item.price_type === 'mile' ? '按里程计费' : '按时间计费' }}
+							</view>
+							<view class="item_info">
+								<text class="title">出发时间</text>
+								{{ item.time }}
+							</view>
+						</view>
+						<view class="price text-orange">
+							<text class="title">￥</text>
+							{{ item.price }}
+							<!-- <text class="text-sm ">（已产生费用）</text> -->
+						</view>
 					</view>
 				</view>
 			</view>
@@ -51,7 +61,7 @@
 </template>
 
 <script>
-	import empty from '@/comnponents/empty.vue';
+import empty from '@/comnponents/empty.vue';
 export default {
 	data() {
 		return {
@@ -80,7 +90,7 @@ export default {
 				content: '确认结束计费吗？',
 				success: res => {
 					if (res.confirm) {
-						 this.$http.api.setOrderDone({
+						this.$http.api.setOrderDone({
 							order_id
 						});
 					}
@@ -106,9 +116,27 @@ export default {
 </script>
 
 <style lang="scss" scopd>
-	.item{
-		margin-bottom: 20rpx;
+.item {
+	margin-bottom: 20rpx;
+}
+.detail_info {
+	padding: 20rpx;
+	font-size: 25rpx;
+	border-bottom: 4rpx solid #f5f6f7;
+	.item_info {
+		.title {
+			display: inline-block;
+			width: 130rpx;
+		}
 	}
+}
+.price {
+	padding: 10rpx;
+	font-size: 40rpx;
+	.title {
+		font-size: 30rpx;
+	}
+}
 .nut-cell-group__warp {
 	display: block;
 	border-radius: 12rpx;
