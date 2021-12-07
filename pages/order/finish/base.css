@@ -1,0 +1,613 @@
+button, cover-view, image, text, view {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+.safe-center {
+    width: 100%;
+    background: 0 0;
+    padding: 0;
+}
+
+.safe-center .line-header {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 240rpx;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.safe-center .line-header .line-header-bg {
+    position: absolute;
+    width: 100%;
+    height: 240rpx;
+}
+
+.safe-center .line-header .sub-title,.safe-center .line-header .title {
+    position: absolute;
+    left: 48rpx;
+    color: #fff;
+    background: 0 0;
+}
+
+.safe-center .line-header .title {
+    top: 92rpx;
+    font-size: 36rpx;
+}
+
+.safe-center .line-header .sub-title {
+    top: 152rpx;
+    font-size: 24rpx;
+}
+
+.safe-center .line-content {
+    position: relative;
+    background: #fff;
+    padding: 0 32rpx 32rpx;
+}
+
+.safe-center .line-content .line-content-sidebar {
+    position: absolute;
+    height: 32rpx;
+    border-top-left-radius: 24rpx;
+    border-top-right-radius: 24rpx;
+    background: #fff;
+    top: -32rpx;
+    width: 100%;
+    left: 0;
+}
+
+.safe-center .line-content .click-transparent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: 0 0;
+}
+
+.safe-center .line-content .border-bottom {
+    position: relative;
+}
+
+.safe-center .line-content .border-bottom::after {
+    content: "";
+    position: absolute;
+    background-color: #ccc;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 2rpx;
+    transform-origin: 50% 50%;
+    transform: scaleY(.5);
+}
+
+@media (-webkit-min-device-pixel-ratio:3),(min-resolution:3dppx) {
+    .safe-center .line-content .border-bottom::after {
+        transform: scaleY(.33);
+    }
+}
+
+.safe-center .at-modal__container .at-modal__content {
+    padding: 0;
+}
+
+.safe-center .icon-show {
+    display: flex;
+    align-items: center;
+    margin-top: 52rpx;
+}
+
+.safe-center .left,.safe-center .right {
+    height: 104rpx;
+    border-radius: 16rpx;
+}
+
+.safe-center .left {
+    margin-right: 30rpx;
+    background: #22c655;
+}
+
+.safe-center .right {
+    background: #ff4c51;
+}
+
+.safe-center .part {
+    flex: 1 1 auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40rpx 0 70rpx;
+}
+
+.safe-center .part cover-image,.safe-center .part image {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.safe-center .part .text {
+    flex: 1;
+    font-size: 36rpx;
+    color: #fff;
+    background: 0 0;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.safe-center .line-title {
+    height: 128rpx;
+    padding: 28rpx 0;
+    font-size: 28rpx;
+    position: relative;
+}
+
+.safe-center .line-title::before {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+}
+
+.safe-center .line-title,.safe-center .line-title .line-left,.safe-center .line-title .line-right {
+    display: flex;
+    align-items: center;
+}
+
+.safe-center .line-title .line-left {
+    flex: 1;
+}
+
+.safe-center .line-title .line-left .icon {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+}
+
+.safe-center .line-title .line-left .lint-content-left {
+    color: #333;
+}
+
+.dispatch-card .title,.safe-center .line-title .line-left .lint-content-left .content {
+    font-size: 28rpx;
+    margin-bottom: 12rpx;
+    font-family: PingFangSC-Medium;
+}
+
+.safe-center .line-title .line-left .lint-content-left .tip {
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+}
+
+.safe-center .line-title .line-right {
+    width: 120rpx;
+    height: 80rpx;
+}
+
+.safe-center .line-title .line-right .view {
+    flex: 1;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #999;
+    letter-spacing: 0;
+    text-align: right;
+}
+
+.safe-center .line-title .line-right .arrow {
+    width: 16rpx;
+    height: 20rpx;
+    margin-left: 12rpx;
+}
+
+.dispatch-card .title {
+    font-size: 36rpx;
+    color: #333;
+    line-height: 50rpx;
+    margin-bottom: 8rpx;
+}
+
+.dispatch-card .sub-title {
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #666;
+    line-height: 34rpx;
+    display: flex;
+    margin-bottom: 48rpx;
+}
+
+.dispatch-card .img-content {
+    height: 204rpx;
+    margin: 0 auto 44rpx;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.dispatch-card cover-image,.dispatch-card image {
+    width: 316rpx;
+    height: 204rpx;
+}
+
+.dispatch-card .bottom,.special-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dispatch-card .button {
+    font-size: 32rpx;
+    color: #666;
+    text-align: center;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: #fff;
+    border: 2rpx solid #ccc;
+    border-radius: 16rpx;
+    margin: 0;
+    width: 326rpx;
+}
+
+.cancel-confirm .sub-title {
+    margin-bottom: 16rpx;
+}
+
+.cancel-confirm .cancel-image {
+    margin: -32rpx -32rpx 8rpx;
+    height: 320rpx;
+    width: 750rpx;
+}
+
+.cancel-confirm .cancel-rule {
+    display: flex;
+    height: 34rpx;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16rpx;
+}
+
+.cancel-confirm .cancel-rule cover-image,.cancel-confirm .cancel-rule image {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 8rpx;
+}
+
+.cancel-confirm .cancel-rule .text {
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #88888e;
+    letter-spacing: 0;
+    text-align: center;
+    height: 34rpx;
+    line-height: 34rpx;
+}
+
+.cancel-confirm .button {
+    width: 686rpx;
+    height: 88rpx;
+    border-radius: 16rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 32rpx;
+    font-family: PingFangSC-Medium;
+    margin: 0;
+}
+
+.cancel-confirm .no-cancel {
+    background: #22c655;
+    color: #fff;
+    margin-bottom: 24rpx;
+}
+
+.cancel-confirm .yes-cancel {
+    background: #fff;
+    color: #22c655;
+    border: 2rpx solid #22c655;
+}
+
+.special-info {
+    position: absolute;
+    top: 32rpx;
+    width: 718rpx;
+    height: 120rpx;
+    left: 16rpx;
+    background: #fff;
+    box-shadow: 0 0 32rpx 0 rgba(0,0,0,.1);
+    border-radius: 16rpx;
+    padding: 20rpx 0;
+    border: 2rpx solid #fff;
+}
+
+.special-info-item {
+    flex: auto;
+    text-align: center;
+    position: relative;
+}
+
+.special-info-item .label {
+    font-size: 24rpx;
+    color: #666;
+    height: 34rpx;
+    line-height: 34rpx;
+    margin-bottom: 4rpx;
+}
+
+.special-info-item .value {
+    font-size: 24rpx;
+    color: #333;
+    height: 42rpx;
+    line-height: 42rpx;
+}
+
+.special-info-item .value,.special-info-item .value .text-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.special-info-item .color-num {
+    font-family: PingFangSC-Medium;
+    font-size: 30rpx;
+    color: #22c655;
+    margin: 0 4rpx;
+}
+
+.special-info-item::after {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 60rpx;
+    width: 2rpx;
+    background: #ebecf0;
+    top: 10rpx;
+    right: 0;
+}
+
+.special-info-item:last-child::after {
+    display: none;
+}
+
+.special-trip-container {
+    height: 100%;
+    width: 100%;
+}
+
+.special-trip-container .layout-body {
+    overflow: visible;
+}
+
+.special-trip-container .sub-title {
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #666;
+    line-height: 34rpx;
+    display: flex;
+}
+
+.special-trip-container .sub-title .color {
+    font-family: PingFangSC-Medium;
+    font-size: 24rpx;
+    color: #22c655;
+    margin: 0 4rpx;
+}
+
+.cc-map {
+    width: 100vw!important;
+    height: 45vh!important;
+}
+
+.placeholder {
+    font-size: 30rpx;
+    font-family: PingFangSC-Regular;
+    line-height: 30rpx;
+    letter-spacing: 0;
+    color: #d0d0d2;
+}
+.top-button .call-police {
+    float: left;
+    width: 192rpx;
+    padding-left: 20rpx;
+    font-size: 24rpx;
+    color: #333;
+    height: 68rpx;
+    font-weight: 500;
+}
+.top-button .item {
+    background: #fff;
+    box-shadow: 0 0 32rpx 0 rgba(0,0,0,.1);
+    border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+}
+.top-button .call-police cover-image, .top-button .call-police image {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 12rpx;
+}
+.top-button {
+	background: 0 0;
+	height: 72rpx;
+	width: 718rpx;
+	margin: 0 16rpx 12rpx;
+}
+
+.top-button .fixed-location {
+	float: right;
+	justify-content: center;
+	align-self: center;
+}
+
+.top-button .item {
+	background: #fff;
+	box-shadow: 0 0 32rpx 0 rgba(0, 0, 0, .1);
+	border-radius: 16rpx;
+	display: flex;
+	align-items: center;
+}
+
+.top-button .fixed-location cover-image,
+.top-button .fixed-location image {
+	width: 66rpx;
+	height: 66rpx;
+}
+.static-block .main {
+    background: #fff;
+    box-shadow: 0 0 32rpx 0 rgba(0,0,0,.1);
+    border-top-left-radius: 32rpx;
+    border-top-right-radius: 32rpx;
+    padding: 48rpx 32rpx 32rpx;
+    min-height: 20rpx;
+    width: 100%;
+    bottom: 0;
+    overflow: visible;
+}
+.cc-float-layout__container .title {
+    font-family: PingFangSC-Medium;
+    font-size: 36rpx;
+    color: #333;
+    line-height: 50rpx;
+}
+.cc-float-layout__container .main .sub-title {
+    margin-top: 8rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #666;
+    line-height: 34rpx;
+    display: flex;
+}
+.cc-float-layout__container .marigin-bottom {
+    height: 2rpx;
+    margin-bottom: 48rpx;
+}
+.driver-info .driver-text {
+    flex: 1;
+    padding-top: 8rpx;
+}
+
+.driver-info .driver-text .car-num {
+    font-family: PingFangSC-Semibold;
+    font-size: 48rpx;
+    color: #333;
+    height: 48rpx;
+    line-height: 48rpx;
+    position: relative;
+    margin-bottom: 20rpx;
+    overflow: visible;
+    white-space: nowrap;
+}
+.driver-info .driver-text .car-num cover-image, .driver-info .driver-text .car-num image {
+    position: absolute;
+    width: 264rpx;
+    height: 12rpx;
+    left: 0;
+    bottom: -8rpx;
+}
+.driver-info .driver-text .car-type {
+    font-family: PingFangSC-Semibold;
+    font-size: 24rpx;
+    color: #333;
+    line-height: 32rpx;
+    height: 32rpx;
+    margin-bottom: 20rpx;
+}
+.driver-info .driver-text .driver, .driver-info .driver-text .rate {
+    display: flex;
+    align-items: center;
+}
+.driver-info .driver-text .driver {
+    font-size: 24rpx;
+    color: #666;
+    line-height: 32rpx;
+    height: 32rpx;
+}
+.driver-info .driver-text .rate .star {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 4rpx;
+}
+.driver-info .driver-img {
+    height: 156rpx;
+    position: relative;
+    padding: 12rpx 8rpx 0 0;
+    width: 256rpx;
+}
+.driver-info .driver-img .car-img {
+    width: 248rpx;
+    height: 124rpx;
+}
+.driver-info .driver-img .header {
+    position: absolute;
+    width: 94rpx;
+    height: 94rpx;
+    border-radius: 50%;
+    top: 31rpx;
+    right: 1rpx;
+    border: 2rpx solid #ebecf0;
+}
+.driver-info {
+    margin: 12rpx 0 44rpx;
+    height: 156rpx;
+}
+.driver-info, .notice-bar {
+    display: flex;
+    justify-content: space-between;
+}
+.trip-card {
+	position: relative;
+	flex-wrap: wrap;
+	overflow: visible;
+}
+
+.trip-card .card-item {
+	height: 88rpx;
+	line-height: 88rpx;
+	font-size: 24rpx;
+	color: #666;
+	text-align: center;
+	position: relative;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	font-family: PingFangSC-Medium;
+	padding: 0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.trip-card,
+.trip-card .card-item,
+.virtual-phone-modal .phone-extra .phone-input .at-input__container {
+	display: flex;
+	/* justify-content: space-between; */
+}
+.trip-card::before {
+    background: #e7e7e8;
+    transform: scaleY(.5);
+    z-index: 9;
+    height: 2rpx;
+    width: 100%;
+    top: 0;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(231, 231, 232);
+}
+.cc-float-layout__container.static-block {
+	z-index: 10;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}

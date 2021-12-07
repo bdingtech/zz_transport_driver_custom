@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/src/vendor/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
@@ -14,60 +17,67 @@
 			}
 
 		},
-		 {
+		{
 			"path": "pages/user/login",
 			"style": {
 				"navigationBarBackgroundColor": "#FFFFFF",
 				"navigationBarTitleText": "绑定司机身份",
 				"enablePullDownRefresh": false
 			}
-		
-		}
-	    ,{
-            "path" : "pages/order/pendingOrder/pendingOrder",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "待处理订单",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/order/pastOrder/pastOrder",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "历史订单",
-                "enablePullDownRefresh": false
-            }
-            
-        },{
-            "path" : "pages/about/about",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "关于我们",
-                "enablePullDownRefresh": false
-            }
-            
-        },
+
+		}, {
+			"path": "pages/order/pendingOrder/pendingOrder",
+			"style": {
+				"navigationBarTitleText": "待处理订单",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/order/pastOrder/pastOrder",
+			"style": {
+				"navigationBarTitleText": "历史订单",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/order/finish/finish",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				"enablePullDownRefresh": false
+			}
+
+		},
 		{
-		    "path" : "pages/about/agreement/agreement",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "用户协议",
-		        "enablePullDownRefresh": false
-		    }
-		    
+			"path": "pages/about/agreement/agreement",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/about/chargeStandard/chargeStandard",
+			"style": {
+				"navigationBarTitleText": "费用标准",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/bindInfo",
+			"style": {
+				"navigationBarTitleText": "注册信息",
+				"enablePullDownRefresh": false
+			}
+
 		}
-        ,{
-            "path" : "pages/user/bindInfo",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "注册信息",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"tabBar": {
 		"color": "#7F8389",
 		"selectedColor": "#5495e6",

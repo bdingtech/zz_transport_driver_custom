@@ -14,8 +14,9 @@ export default {
 };
 </script>
 
-<style>
+<style  lang="scss"> 
 /*每个页面公共css */
+@import '@/src/vendor/uview-ui/index.scss';
 @import '@/src/vendor/colorUI/main.css';
 @import '@/src/vendor/colorUI/icon.css';
 </style>

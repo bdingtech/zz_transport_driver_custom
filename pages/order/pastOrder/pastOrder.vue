@@ -2,7 +2,7 @@
 	<view>
 		<empty text="没有待处理的订单" mode="search" margin-top="100" v-if="orderList.length === 0"></empty>
 		<view class="orderList" v-else>
-			<view class="item" v-for="item in orderList" :key="item.id">
+			<view class="item" v-for="item in orderList" :key="item.id" @click="goDetail(item.id)">
 				<view class="nut-cell-group__warp">
 					<!-- <view title="链接" icon="my">132</view> -->
 					<view class="nut-cell">
@@ -75,6 +75,11 @@ export default {
 		this.getMyOrderList();
 	},
 	methods: {
+		goDetail(id){
+			uni.navigateTo({
+				url:'/pages/order/finish/finish?id=' + id
+			})
+		},
 		async getMyOrderList() {
 			this.orderList = await this.$http.api.getMyOrderList();
 		},

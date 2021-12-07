@@ -111,7 +111,9 @@ export default {
 						await this.$http.api.setOrderDone({
 							order_id
 						});
-						this.getMyOrderList();
+						uni.navigateTo({
+							url:'/pages/order/finish/finish?id=' + order_id
+						})
 					}
 				}
 			});
