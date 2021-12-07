@@ -47,6 +47,10 @@
 								{{ item.time }}
 							</view>
 						</view>
+						<view class="nut-cell flex align-center justify-between">
+							<text>减半计价</text>
+							<u-switch v-model="item.is_half_mile" @change="handelHalfMile(item.is_half_mile,item.id)"></u-switch>
+						</view>
 						<view class="nut-cell" v-if="item.order_status == 'running'">
 							<view class="price text-orange">
 								<text class="title">￥</text>
@@ -72,6 +76,7 @@ import empty from '@/comnponents/empty.vue';
 export default {
 	data() {
 		return {
+			checked:false,
 			orderList: []
 		};
 	},
@@ -91,6 +96,15 @@ export default {
 		}
 	},
 	methods: {
+		async handelHalfMile(is_half_mile,id){
+			console.log(is_half_mile)
+			console.log(id)
+			await this.$http.api.setOrderHalfMile({
+				order_id:id,
+				is_half_mile:is_half_mile === 1 ? 0 : 1
+			});
+			this.getMyOrderList()
+		},
 		async getMyOrderList() {
 			this.orderList = await this.$http.api.getMyOrderList({
 				type: 'process'
