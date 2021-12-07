@@ -96,12 +96,13 @@ export default {
 		}
 	},
 	methods: {
-		async handelHalfMile(is_half_mile,id){
-			console.log(is_half_mile)
+		async handelHalfMile(currentAction,id){
+			console.log(currentAction)
 			console.log(id)
+			console.log(Boolean(currentAction))
 			await this.$http.api.setOrderHalfMile({
 				order_id:id,
-				is_half_mile:is_half_mile === 1 ? 0 : 1
+				is_half_mile:Boolean(currentAction) ? 1 : 0
 			});
 			this.getMyOrderList()
 		},
