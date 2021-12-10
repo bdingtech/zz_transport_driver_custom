@@ -12,6 +12,7 @@ const install = (Vue, vm) => {
 	const getCarPrice = (params = {}) => vm.$http.post('/gwyc.apply/getCarPrice', params);
 	const getOrderInfo = (params = {}) => vm.$http.post('/gwyc.driver/getOrderDetail', params);
 	const setOrderHalfMile = (params = {}) => vm.$http.post('/gwyc.driver/setOrderHalfMile', params);
+	const drvBindPhone = (params = {}) => vm.$http.post('/platform.Userservice/drvBindPhone', params);
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$http.api(因为vm就是this，也即this.$http.api)下
 	vm.$http.api = {
 		drvMpLogin,
@@ -22,7 +23,8 @@ const install = (Vue, vm) => {
 		checkIsDrv,
 		getCarPrice,
 		getOrderInfo,
-		setOrderHalfMile
+		setOrderHalfMile,
+		drvBindPhone
 	};
 }
 
