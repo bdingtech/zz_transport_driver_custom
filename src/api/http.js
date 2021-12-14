@@ -95,6 +95,9 @@ http.interceptors.response.use(async (response) => {
 		return Promise.reject(response);
 	}
 	//正常200返回
+	// if(response.config.url === "/platform.Userservice/checkIsDrv"){
+	// 	return response.data
+	// }
 	return response.data.data
 }, (err) => {
 	/*  对响应错误做点什么 （statusCode !== 200）*/

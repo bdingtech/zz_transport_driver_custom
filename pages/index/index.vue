@@ -8,6 +8,12 @@
 			</view>
 		</view>
 		<div class="index-components">
+			 <view style="margin: 30rpx 0;" v-if="drvInfo.status == 3">
+			 	<u-alert-tips type="warning"  title="提示" description="司机信息等待后台审核中..."  :show-icon="true"></u-alert-tips>
+			 </view>
+			  <view style="margin: 30rpx 0;" v-if="drvInfo.status == 4">
+			 	<u-alert-tips type="error" title="提示" description="您的账户已被平台禁用"  :show-icon="true"></u-alert-tips>
+			 </view>
 			<ol>
 				<ul v-if="!isDriver">
 					<li @click="goDetail('register')">
@@ -61,14 +67,20 @@ export default {
 				this.isDriver = false;
 			});
 		});
+		this.getDriverInfo()
 	},
 	data() {
 		return {
 			isDriver: true,
+			drvInfo:{},
 			topHeight: uni.getSystemInfoSync().statusBarHeight
 		};
 	},
 	methods: {
+		async getDriverInfo() {
+			const result = await this.$http.api.checkIsDrv();
+			this.drvInfo = result;
+		},
 		goDetail(type) {
 			let url = '';
 			switch (type) {

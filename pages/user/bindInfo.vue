@@ -61,7 +61,7 @@ export default {
 	methods: {
 		async getDriverInfo() {
 			const result = await this.$http.api.checkIsDrv();
-			this.info = result;
+			this.info = result.driver_info;
 		}
 	}
 };
