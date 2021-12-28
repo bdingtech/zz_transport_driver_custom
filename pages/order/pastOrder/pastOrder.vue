@@ -45,7 +45,7 @@
 							</view>
 							<view class="item_info">
 								<text class="title">出发时间</text>
-								{{ item.time }}
+								{{ item.departure_time }}
 							</view>
 						</view>
 						<view class="price text-orange">
