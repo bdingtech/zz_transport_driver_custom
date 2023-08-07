@@ -54,15 +54,14 @@
 		</view>
 
 		<!--协议-->
-		<view class="zaiui-agreement-checked-view">
-			<!-- <checkbox class='round red sm zaiui-checked checked'/> -->
+<!-- 		<view class="zaiui-agreement-checked-view">
 			<view class="text-sm text-black-view">
 				<view @click="goUrl('/usercenter/about/agreement/agreement')" class="text-gray text-center">
 					登录即代表您同意我们的以下协议</view>
 				<view @click="goUrl('/usercenter/about/agreement/agreement')" class="text-blue text-center">
 					《{{ APPNAME }}用户服务协议》《{{ APPNAME }}隐私政策》</view>
 			</view>
-		</view>
+		</view> -->
 		<!--底部说明-->
 		<view class="text-sm text-gray zaiui-foot-ad-view">{{ APPNAME }}-更专业的本地出行平台</view>
 	</view>
