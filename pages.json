@@ -77,7 +77,23 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/home/home",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "首页",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/order/home/home",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+            }
+        }
+    ],
 	"tabBar": {
 		"color": "#7F8389",
 		"selectedColor": "#5495e6",

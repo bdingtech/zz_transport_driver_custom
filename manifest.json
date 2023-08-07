@@ -1,5 +1,5 @@
 {
-    "name" : "xt_transport_driver_miniProg",
+    "name" : "湘运行定制客运司机端",
     "appid" : "__UNI__6A03C7B",
     "description" : "",
     "versionName" : "1.0.0",
@@ -50,7 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxf96e2e929d9849e7",
+        "appid" : "wx256024e291d27796",
         "setting" : {
             "urlCheck" : false,
             "postcss" : false,

@@ -13,6 +13,14 @@ const install = (Vue, vm) => {
 	const getOrderInfo = (params = {}) => vm.$http.post('/gwyc.driver/getOrderDetail', params);
 	const setOrderHalfMile = (params = {}) => vm.$http.post('/gwyc.driver/setOrderHalfMile', params);
 	const drvBindPhone = (params = {}) => vm.$http.post('/platform.Userservice/drvBindPhone', params);
+	const getWaitOrders = (params = {}) => vm.$http.post('/bus.driver/getWaitOrders', params);
+	const getProcessOrders = (params = {}) => vm.$http.post('/bus.driver/getProcessOrders', params);
+	const getAllOrders = (params = {}) => vm.$http.post('/bus.driver/getAllOrders', params);
+	const doExWorkStatus = (params = {}) => vm.$http.post('/bus.driver/doExWorkStatus', params);
+	const doIgnoreOrders = (params = {}) => vm.$http.post('/bus.driver/doIgnoreOrders', params);
+	const doTakeOrders = (params = {}) => vm.$http.post('/bus.driver/doTakeOrders', params);
+	const setOrderDone_v2 = (params = {}) => vm.$http.post('/bus.driver/setOrderDone', params);
+	const doRevokeTake = (params = {}) => vm.$http.post('/bus.driver/doRevokeTake', params);
 	// 将各个定义的接口名称，统一放进对象挂载到vm.$http.api(因为vm就是this，也即this.$http.api)下
 	vm.$http.api = {
 		drvMpLogin,
@@ -24,7 +32,15 @@ const install = (Vue, vm) => {
 		getCarPrice,
 		getOrderInfo,
 		setOrderHalfMile,
-		drvBindPhone
+		drvBindPhone,
+		getWaitOrders,
+		getAllOrders,
+		getProcessOrders,
+		doExWorkStatus,
+		doIgnoreOrders,
+		doTakeOrders,
+		setOrderDone_v2,
+		doRevokeTake
 	};
 }
 

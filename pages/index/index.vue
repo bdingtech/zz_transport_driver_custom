@@ -1,9 +1,9 @@
 <template>
 	<view class="index" :style="'padding-top:' + topHeight + 'px'">
 		<view class="index-header">
-			<image src="https://cdn99.jerlan.cn/20211115225309.png" srcset="" />
+			<image src="/static/zzxy_logo.jpg" srcset="" style="border-radius: 50%;" />
 			<view class="info">
-				<h1>交发科大用车·司机端</h1>
+				<h1>湘运行定制客运·司机端</h1>
 				<p>用心服务好客户的每一次出行</p>
 			</view>
 		</view>
@@ -28,17 +28,17 @@
 					<li @click="goDetail('pending')">
 						<image class="img" src="@/static/images/waiting.png" />
 						<view class="text">
-							<span>待处理订单</span>
+							<span>订单中心</span>
 							<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 						</view>
 					</li>
-					<li @click="goDetail('order')">
+<!-- 					<li @click="goDetail('order')">
 						<image class="img" src="@/static/images/orderQuery.png" />
 						<view class="text">
 							<span>历史订单</span>
 							<image class="_img" src="/static/images/bus_details_icon_go.png" mode=""></image>
 						</view>
-					</li>
+					</li> -->
 					<li @click="goDetail('driverInfo')">
 						<image class="img" src="@/static/images/acount.png" />
 						<view class="text">
@@ -88,7 +88,7 @@ export default {
 					url = '/pages/user/login';
 					break;
 				case 'pending':
-					url = '/pages/order/pendingOrder/pendingOrder';
+					url = '/pages/order/home/home';
 					break;
 				case 'order':
 					url = '/pages/order/pastOrder/pastOrder';
