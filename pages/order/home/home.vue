@@ -3,8 +3,8 @@
 		<uv-navbar autoBack>
 			<template v-slot:center>
 				<view class="" style="margin-right: 200rpx;">
-					<uv-tabs :current="current" placeholder fixed :autoBack="true" :list="list" lineColor="#0066E6" @change="onTabChange"
-						bold></uv-tabs>
+					<uv-tabs :current="current" placeholder fixed :autoBack="true" :list="list" lineColor="#0066E6"
+						@change="onTabChange" bold></uv-tabs>
 				</view>
 			</template>
 		</uv-navbar>
@@ -21,7 +21,8 @@
 					<uv-empty mode="order" text="暂无订单,您可以刷新列表或者检查是否开启出车模式" textColor="#696a6c"
 						icon="/static/empty.png"></uv-empty>
 					<view class="" style="width: 270rpx;margin: 20rpx auto 0">
-						<u-button type="primary" :plain="true" text="镂空" :hairline="true" @click="this.current = 1">去查看已接单列表</u-button>
+						<u-button type="primary" :plain="true" text="镂空" :hairline="true"
+							@click="this.current = 1">去查看已接单列表</u-button>
 					</view>
 
 				</view>
@@ -120,11 +121,14 @@
 				uni.showModal({
 					title: '提示',
 					content: '确认忽略订单吗？',
-					success: async () => {
-						const result = await this.$http.api.doIgnoreOrders({
-							trade_no
-						});
-						this.init()
+					success: async (e) => {
+						if (e.confirm) {
+							const result = await this.$http.api.doIgnoreOrders({
+								trade_no
+							});
+							this.init()
+						}
+
 					}
 				})
 			},
@@ -132,11 +136,13 @@
 				uni.showModal({
 					title: '提示',
 					content: '确认接受派单吗？',
-					success: async () => {
-						const result = await this.$http.api.doTakeOrders({
-							trade_no
-						});
-						this.init()
+					success: async (e) => {
+						if (e.confirm) {
+							const result = await this.$http.api.doTakeOrders({
+								trade_no
+							});
+							this.init()
+						}
 					}
 				})
 			},
@@ -144,11 +150,13 @@
 				uni.showModal({
 					title: '提示',
 					content: '确认退回订单吗？',
-					success: async () => {
-						const result = await this.$http.api.doRevokeTake({
-							trade_no
-						});
-						this.init()
+					success: async (e) => {
+						if (e.confirm) {
+							const result = await this.$http.api.doIgnoreOrders({
+								trade_no
+							});
+							this.init()
+						}
 					}
 				})
 			},
@@ -156,11 +164,13 @@
 				uni.showModal({
 					title: '提示',
 					content: '确认结束行程完成计费吗？',
-					success: async () => {
-						const result = await this.$http.api.setOrderDone_v2({
-							trade_no
-						});
-						this.init()
+					success: async (e) => {
+						if (e.confirm) {
+							const result = await this.$http.api.setOrderDone_v2({
+								trade_no
+							});
+							this.init()
+						}
 					}
 				})
 			},
