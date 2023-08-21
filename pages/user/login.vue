@@ -44,8 +44,12 @@
 				</view>
 			</u-modal> -->
 
-			<button @click="resignAsDriver" class="cu-btn round bg-green">
-				<text class="cuIcon-weixin icon" />
+			<button @click="resignAsDriver" class="cu-btn round bg-green" v-if="isChecked">
+				<!-- <text class="cuIcon-weixin icon" /> -->
+				<text>注册成为司机</text>
+			</button>
+			<button @click="this.$u.toast('请勾选下方用户协议')" class="cu-btn round bg-green" v-else style="opacity: 0.5;">
+				<!-- <text class="cuIcon-weixin icon" /> -->
 				<text>注册成为司机</text>
 			</button>
 			<!-- 			<button class="cu-btn plain round margin-top tel" >
@@ -54,14 +58,14 @@
 		</view>
 
 		<!--协议-->
-<!-- 		<view class="zaiui-agreement-checked-view">
-			<view class="text-sm text-black-view">
-				<view @click="goUrl('/usercenter/about/agreement/agreement')" class="text-gray text-center">
-					登录即代表您同意我们的以下协议</view>
-				<view @click="goUrl('/usercenter/about/agreement/agreement')" class="text-blue text-center">
-					《{{ APPNAME }}用户服务协议》《{{ APPNAME }}隐私政策》</view>
+		<view class="zaiui-agreement-checked-view" @click.stop="read">
+			<checkbox color="#07c160" :checked="isChecked" @click.stop="read" class='round sm zaiui-checked ' />
+			<view class="text-sm text-black-view text-left">
+				<view  class="text-blue ">
+					<text class="text-gray ">阅读并同意</text><text @click.stop="goUrl('/pages/about/agreement/agreement')">《{{ APPNAME }}用户服务协议》《{{ APPNAME }}隐私政策》</text>
+				</view>
 			</view>
-		</view> -->
+		</view>
 		<!--底部说明-->
 		<view class="text-sm text-gray zaiui-foot-ad-view">{{ APPNAME }}-更专业的本地出行平台</view>
 	</view>
@@ -92,7 +96,8 @@
 				},
 				code: null,
 				qyCode: null,
-				show: false
+				show: false,
+				isChecked: false
 			};
 		},
 		async onLoad() {
@@ -113,6 +118,9 @@
 			});
 		},
 		methods: {
+			read() {
+				this.isChecked = !this.isChecked
+			},
 			goUrl(url) {
 				uni.navigateTo({
 					url: url
@@ -173,7 +181,7 @@
 				console.log(result);
 			},
 			async getUserinfo(telData) {
-				
+
 				this.infoData = await getUserInfoRes();
 				if (this.infoData.errMsg !== 'getUserProfile:ok') {
 					this.$u.toast('请同意授权');
@@ -284,15 +292,17 @@
 	.zaiui-agreement-checked-view {
 		position: relative;
 		padding: 27.27rpx 45.45rpx;
+		display: flex;
+		align-items: center;
 
 		.zaiui-checked {
-			position: absolute;
 			transform: scale(0.7);
 		}
 
 		.text-black-view {
 			// padding-left: 34.54rpx;
 			line-height: 47.27rpx;
+			margin-left: 25rpx;
 		}
 	}
 
