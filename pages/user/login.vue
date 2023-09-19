@@ -23,6 +23,10 @@
 				<view class="title">身份证</view>
 				<input v-model="driverInfo.driver_sfz" type="idcard" placeholder="请输入您的身份证号码" />
 			</view>
+			<view class="cu-form-group ">
+				<view class="title">车牌号</view>
+				<input :value="driverInfo.car_no" disabled placeholder="请选择您的车牌号" @click="getLicensePlate" />
+			</view>
 			<view class="cu-form-group">
 				<view class="title">手机号</view>
 				<input v-model="driverInfo.driver_tel" type="number" placeholder="请输入您的手机号码" />
@@ -44,12 +48,8 @@
 				</view>
 			</u-modal> -->
 
-			<button @click="resignAsDriver" class="cu-btn round bg-green" v-if="isChecked">
-				<!-- <text class="cuIcon-weixin icon" /> -->
-				<text>注册成为司机</text>
-			</button>
-			<button @click="this.$u.toast('请勾选下方用户协议')" class="cu-btn round bg-green" v-else style="opacity: 0.5;">
-				<!-- <text class="cuIcon-weixin icon" /> -->
+			<button @click="resignAsDriver" class="cu-btn round bg-green">
+				<text class="cuIcon-weixin icon" />
 				<text>注册成为司机</text>
 			</button>
 			<!-- 			<button class="cu-btn plain round margin-top tel" >
@@ -58,12 +58,11 @@
 		</view>
 
 		<!--协议-->
-		<view class="zaiui-agreement-checked-view" @click.stop="read">
-			<checkbox color="#07c160" :checked="isChecked" @click.stop="read" class='round sm zaiui-checked ' />
-			<view class="text-sm text-black-view text-left">
-				<view  class="text-blue ">
-					<text class="text-gray ">阅读并同意</text><text @click.stop="goUrl('/pages/about/agreement/agreement')">《{{ APPNAME }}用户服务协议》《{{ APPNAME }}隐私政策》</text>
-				</view>
+		<view class="zaiui-agreement-checked-view">
+			<view class="text-sm text-black-view">
+				<view class="text-gray text-center">用户协议及其隐私政策请点击屏幕右上角更多查看</view>
+				<!-- 			<view @click="goUrl('/usercenter/about/agreement/agreement')" class="text-blue text-center">
+					《{{ APPNAME }}用户服务协议》《{{ APPNAME }}隐私政策》</view> -->
 			</view>
 		</view>
 		<!--底部说明-->
@@ -92,12 +91,12 @@
 				driverInfo: {
 					driver_name: '',
 					driver_tel: '',
-					driver_sfz: ''
+					driver_sfz: '',
+					car_no: ''
 				},
 				code: null,
 				qyCode: null,
-				show: false,
-				isChecked: false
+				show: false
 			};
 		},
 		async onLoad() {
@@ -118,8 +117,19 @@
 			});
 		},
 		methods: {
-			read() {
-				this.isChecked = !this.isChecked
+			getLicensePlate() {
+				uni.chooseLicensePlate({
+					success: (e) => {
+						console.log(e)
+						this.driverInfo.car_no = e.plateNumber
+					},
+					fail: () => {
+						uni.showToast({
+							title: "请授权获取您的车牌",
+							icon: 'none'
+						})
+					}
+				})
 			},
 			goUrl(url) {
 				uni.navigateTo({
@@ -165,6 +175,13 @@
 				if (this.driverInfo.driver_name.length === 0) {
 					uni.showToast({
 						title: '请输入姓名',
+						icon: 'error'
+					});
+					return;
+				}
+				if (this.driverInfo.car_no.length === 0) {
+					uni.showToast({
+						title: '请输入车牌号',
 						icon: 'error'
 					});
 					return;
@@ -292,17 +309,15 @@
 	.zaiui-agreement-checked-view {
 		position: relative;
 		padding: 27.27rpx 45.45rpx;
-		display: flex;
-		align-items: center;
 
 		.zaiui-checked {
+			position: absolute;
 			transform: scale(0.7);
 		}
 
 		.text-black-view {
 			// padding-left: 34.54rpx;
 			line-height: 47.27rpx;
-			margin-left: 25rpx;
 		}
 	}
 

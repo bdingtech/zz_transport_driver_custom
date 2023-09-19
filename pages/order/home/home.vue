@@ -106,7 +106,10 @@
 			empty,
 			orderCard
 		},
-		onLoad() {
+		onLoad(option) {
+			if(option.tabId){
+				this.current = +option.tabId
+			}
 			this.init()
 		},
 		methods: {
