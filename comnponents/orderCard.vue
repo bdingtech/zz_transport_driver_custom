@@ -11,6 +11,9 @@
 					</view>
 					<!-- <view><image src="@/static/images/bus_details_icon_go.png" /></view> -->
 					<!-- <view @click="call(item.tel)"><image src="@/static/images/call.png" /></view> -->
+					<view @click="call(orderDetail.tel)" v-if="showTel">
+						<image src="@/static/images/call.png" />
+					</view>
 				</view>
 			</view>
 			<view class="nut-cell">
@@ -86,6 +89,10 @@
 			shoProcessStatusOprate: {
 				type: Boolean,
 				default: false
+			},
+			showTel: {
+				type: Boolean,
+				default: true
 			}
 		},
 		methods: {
@@ -97,6 +104,11 @@
 					latitude,
 					longitude
 				});
+			},
+			call(tel) {
+				uni.makePhoneCall({
+					phoneNumber: tel
+				})
 			},
 		}
 	}
@@ -198,8 +210,8 @@
 			align-items: center;
 
 			image {
-				width: 20rpx;
-				height: 20rpx;
+				width: 50rpx;
+				height: 50rpx;
 			}
 
 			.time {

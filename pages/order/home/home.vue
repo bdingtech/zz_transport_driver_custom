@@ -14,8 +14,8 @@
 		<block v-if="current === 0">
 			<scroll-view scroll-y="true" class="order-list" :style="{opacity: work_status ? '1' :'.3;'}">
 				<view v-if="waitOrderList.length>0">
-					<orderCard v-for="item in waitOrderList" :orderDetail="item" @onDismiss="onDismiss"
-						showWaitStatusOprate @onAccept="onAccept"></orderCard>
+					<orderCard v-for="item in waitOrderList"  :orderDetail="item" @onDismiss="onDismiss"
+						showWaitStatusOprate @onAccept="onAccept" :showTel="false"></orderCard>
 				</view>
 				<view v-else>
 					<uv-empty mode="order" text="暂无订单,您可以刷新列表或者检查是否开启出车模式" textColor="#696a6c"
@@ -107,7 +107,7 @@
 			orderCard
 		},
 		onLoad(option) {
-			if(option.tabId){
+			if (option.tabId) {
 				this.current = +option.tabId
 			}
 			this.init()
@@ -155,7 +155,7 @@
 					content: '确认退回订单吗？',
 					success: async (e) => {
 						if (e.confirm) {
-							const result = await this.$http.api.doIgnoreOrders({
+							const result = await this.$http.api.doRevokeTake({
 								trade_no
 							});
 							this.init()
